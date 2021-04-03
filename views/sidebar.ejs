@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="sidebar.css">
+  <!-- Favicons -->
+  <link
+    href="data:image/png;base64,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"
+    rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Font Awesome Icon Library -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="vendor/aos/aos.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    /* Style the tab */
+    .tab {
+      float: left;
+
+      background-color: #fff;
+      width: 250px;
+      height: 500px;
+    }
+
+    /* Style the buttons inside the tab */
+    .tab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 22px 16px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: rgba(83, 46, 165, 0.1);
+    }
+
+    /* Create an active/current "tab button" class */
+    .tab button.active {
+      background-color: rgba(83, 46, 165, 0.1);
+      border-right: 6px solid rgb(36, 22, 68);
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+
+      float: left;
+      padding: 0px 12px;
+
+      width: 100%;
+      border-left: none;
+
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto title"><a href="/Homepage2">HireBook<br /><span style="font-size: 15px;" class="typed"
+            data-typed-items="By the Indians,For the Indians"></span></a></h1>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/Homepage2" style="font-family:poppins ; font-weight: 500; font-size: medium;">Home</a></li>
+          <li><a href="/freelancers" style="font-family:poppins ; font-weight: 500;font-size: medium;">Freelancers</a>
+          </li>
+          <li><a href="/Projects" style="font-family:poppins ; font-weight: 500;font-size: medium;">Projects</a>
+          </li>
+          <li><a href="/contact" style="font-family:poppins ; font-weight: 500;font-size: medium;">Contact</a></li>
+          <li><a href="/ProjectEdit" style="font-family:poppins ; font-weight: 500;font-size: medium;">Post a
+              Project</a></li>
+          <li><a href="/GigEdit" style="font-family:poppins ; font-weight: 500;font-size: medium;">Create a gig</a>
+          </li>
+          <li><a href="/help" style="font-family:poppins ; font-weight: 500;font-size: medium;">Help</a></li>
+
+          <li><a href="/chat"><img src="img/chat.png" style="height: 30px; width: 30px;"></a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+  </header>
+  <!-- Vertical navbar -->
+  <div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center">
+        <img loading="lazy" src="img\me.png" alt="..." width="80" height="80"
+          class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+          <h4 class="m-0">Divyansh</h4>
+          <p class="font-weight-normal text-muted mb-0">Web developer</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Dashboard</p>
+
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'Profile')" id="defaultOpen"><i
+          class="fa fa-user mr-3 text-primary fa-fw"></i>Profile</button>
+      <button class="tablinks" onclick="openCity(event, 'EditProfile')"><i
+          class="fa fa-address-card mr-3 text-primary fa-fw"></i>Edit Profile</button>
+      <button class="tablinks" onclick="openCity(event, 'ActiveProjects')"><i
+          class="fa fa-pencil mr-3 text-primary fa-fw"></i>Active Projects</button>
+      <button class="tablinks" onclick="openCity(event, 'PostedProjects')"><i
+          class="fa fa-pencil mr-3 text-primary fa-fw"></i>Posted Projects</button>
+      <button class="tablinks" onclick="openCity(event, 'Gigs')"><i
+          class="fa fa-pencil mr-3 text-primary fa-fw"></i>Gigs</button>
+      <button class="tablinks" onclick="openCity(event, 'Wallet')"><i
+          class="fa fa-money mr-3 text-primary fa-fw"></i>Wallet</button>
+      <a href="/index"> <button class="tablinks" onclick="openCity(event, 'LogOut')"><i
+            class="fa fa-sign-out mr-3 text-primary fa-fw"></i>Log Out</button></a>
+    </div>
+
+
+
+  </div>
+  <!-- End vertical navbar -->
+
+
+  <!-- Page content holder -->
+  <div class="page-content p-5" id="content">
+    <!-- Toggle button -->
+    <button id="sidebarCollapse" style="margin-top: 50px;" type="button"
+      class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small
+        class="text-uppercase font-weight-bold">HIDE</small></button>
+
+    <!-- Demo content -->
+    <div id="Profile" class="tabcontent">
+      <h3>PROFILE</h3>
+      <div class="row gutters-sm">
+        <div class="col-md-12">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+
+                  Anmol Kumar
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+
+                  anmol@gmail.com
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Phone</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  (239) 816-9029
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Mobile</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+
+                  9852802266
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Address</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+
+                  bihar
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <label>About</label>
+
+              <br>
+              <p>
+
+                web developer
+              </p>
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+    <form action="/sidebar?_method=put" method="POST">
+      <div id="EditProfile" class="tabcontent">
+        <h3>Edit Profile</h3>
+        <div class="container ">
+
+          <br />
+
+          <div class="row">
+            <div class="col-3">
+              <img id="blah" src="http://placehold.it/200" alt="your image" />
+              <br />
+              <input style="margin-left: 20px;" type='file' class="col-11" onchange="readURL(this);" />
+            </div>
+            <div class="col-8">
+              <div class="row ">
+
+                <br /><br />
+                <div class="col-12">
+                  <input type="text" name="fullName" class="form-control " placeholder="Full name">
+                </div>
+
+              </div>
+              <br />
+              <div class="row ">
+
+                <br /><br />
+                <div class="col-12">
+                  <input type="text" name="about" class="form-control " placeholder="About">
+                </div>
+
+              </div>
+              <br />
+              <div class="row">
+                <div class="col-12">
+                  <input type="text" name="headLine" class="form-control  " placeholder="Head Line">
+                </div>
+                <div class="row">
+
+                </div>
+                <br />
+
+                <div class="col-6">
+                  <input type="email" name="email" class="form-control mb-4 " placeholder="E-mail">
+                </div>
+                <div class="col-6">
+                  <input type="number" name="mobile" class="form-control mb-4 " placeholder="Mobile number">
+                </div>
+                <br />
+
+
+                <div class="col-12">
+                  <input type="text" name="address" class="form-control mb-4 " placeholder="Address">
+                </div>
+
+                <br />
+
+                <div class="row">
+                  <div class="col">
+                    <br /><br /><input type="submit" style="background-color: #302b63; color: white;"
+                      value="Submit"><br /><br /><br />
+                  </div>
+                  <div class="col">
+                    <br /><br /><input type="submit" style="background-color: #302b63; color: white;"
+                      value="Cancel"><br /><br /><br />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div id="ActiveProjects" class="tabcontent">
+      <h3>Active Projects</h3>
+      <div class="card" id="cardclick">
+        <h5 class="card-header">Project-1</h5>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col" style="align-items: center;">
+              <img src="img/me.png" style="height: 200px; float:left; width: 200px;">
+              <div class="row">
+                <div class="col">
+                  <div class="btn-group dropleft" style="float: right;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/contact">Cancel Project</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title"><b>Gig Title</b></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title" style="float: left;">Freelancer Name</h5>
+                  <h5 class="card-title" style="float: right;">Client Name</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-primary">Delivered</button>
+                  <button type="button" class="btn btn-primary">Received</button>
+
+                </div>
+              </div><br />
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="card-title" style="margin-left: 4px;">Give Ratings</h5>
+                  <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star">5</label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star">4</label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star">3</label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star">2</label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">1</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="cardclick">
+        <h5 class="card-header">Project-2</h5>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col" style="align-items: center;">
+              <div class="row">
+                <div class="col">
+                  <div class="btn-group dropleft" style="float: right;">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="/contact">Cancel Project</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title"><b>Job Title</b></h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title" style="float: left;">Freelancer Name</h5>
+                  <h5 class="card-title" style="float: right;">Client Name</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <!-- <button type="button" class="btn btn-primary">Delivered</button>
+                         -->
+                  <!-- Button to Open the Modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Delivered
+                  </button>
+
+                  <!-- The Modal -->
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Rate your Freelancer</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <h5 class="card-title" style="margin-left: 4px;">Give Ratings</h5>
+                          <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
+                              title="5 star">5</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                              title="4 star">4</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                              title="3 star">3</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                              title="2 star">2</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                              title="1 star">1</label>
+                          </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <button type="button" class="btn btn-primary" >Received</button> -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Received
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><br />
+              <!-- <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="card-title" style="margin-left: 4px;" >Give Ratings</h5>
+                        <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star">5</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star">4</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star">3</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star">2</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">1</label>
+                        </div>
+                  </div>	
+                    </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="PostedProjects" class="tabcontent">
+      <h3>Posted Projects</h3>
+      <% posted.forEach((row)=>{ %>
+        <div class="card" id="cardclick">
+          <h5 class="card-header">Project-1</h5>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col" style="align-items: center;">
+
+                <div class="row">
+                  <div class="col">
+                    <div class="btn-group dropleft" style="float: right;">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/edit/<%= row._id %>">Edit Project</a>
+                        <a class="dropdown-item" href="/delete/<%= row._id %>">Delete Project</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title"><b>
+                        <%= row.jobJD %>
+                      </b></h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title" style="float: left;">
+                      <%= row.workJD %>
+                    </h5>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+    <div id="Gigs" class="tabcontent">
+      <div class="container">
+        <h3>Gigs</h3>
+        <div class="card" id="cardclick">
+          <h5 class="card-header">Gig-1</h5>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col" style="align-items: center;">
+                <img src="img/me.png" style="height: 200px; float:left; width: 200px;">
+                <div class="row">
+                  <div class="col">
+                    <div class="btn-group dropleft" style="float: right;">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/GigEdit">Edit Gig</a>
+                        <a class="dropdown-item" href="#">Delete Gig</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <% gigs.forEach((row)=>{ %>
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title"><b>
+                          <%= row.gigTitle %>
+                        </b></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title" style="float: left;">
+                        <%= row.describeGig %>
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title">
+                        Category
+                      </h5>
+                      <h5 class="card-title">
+                        <%= row.subCategory %>
+                      </h5>
+                      <h5 class="card-title">
+                        <%= row.price %>
+                      </h5>
+                    </div>
+                  </div>
+                  <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="Wallet" class="tabcontent">
+      <h3>Wallet</h3>
+      <main id="main" class="container" style="height:50vh;margin-top:20px">
+
+        <button type="button" class="btn btn-primary" style="background-color: #302b63; color: white;"
+          data-toggle="modal" data-target="#exampleModal">
+          Edit Bank Details
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Bank Details </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" id="username" aria-describedby="username"
+                  placeholder="USER NAME"><br />
+                <input type="text" class="form-control" id="accNum" aria-describedby="accNum"
+                  placeholder="ACCOUNT NUMBER"><br />
+                <input type="number" class="form-control" id="ifscCode" aria-describedby="ifscCode"
+                  placeholder="IFSC CODE"><br />
+                <input type="number" class="form-control" id="upi id" aria-describedby="upi id"
+                  placeholder="UPI ID (optional)"><br />
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img src="img/freelancer.png" class="rounded mx-auto d-block">
+        <div class="row">
+          <p style="font-size:30px;">BALANCE:<span style="color: green;"> ₹1000</span></p>
+        </div>
+        <br />
+
+        <br />
+        <div class="row">
+          <div class="col">
+
+            <button style="background-color: #302b63; color: white;" type="button" class="btn btn-primary w-100"
+              data-toggle="modal" data-target="#exampleModalCenter">
+              Withdraw
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Withdraw Amount</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="number" class="form-control" id="withdraw_amount" aria-describedby="withdraw_amount"
+                      placeholder="Enter amount"><br />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="alertfunc()">Submit</button>
+                    <script>
+                      function alertfunc() {
+                        alert("Amount will be transferred in 2 hours.")
+                      }
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <a href="/payment" target="_blank"> <button type="button" style="background-color: #302b63; color: white;"
+                type="button" class="w-100 btn ">Deposit</button></a>
+
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="LogOut" class="tabcontent">
+
+    </div>
+    <!-- End demo content -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+    <script src="js/sidebar.js"></script>
+    <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
+</html>
