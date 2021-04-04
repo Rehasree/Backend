@@ -524,7 +524,7 @@
                 <div class="row">
                   <div class="col">
                     <h5 class="card-title"><b>
-                       <b><%= row.jobJD %></b> <a href="<%= row.weblink %>">( <%= row.companyName %>)</a> 
+                       <b><%= row.jobTitle %></b> <a href="<%= row.weblink %>">( <%= row.companyName %>)</a> 
                       </b></h5>
                   </div>
                 </div>
@@ -588,7 +588,8 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title">
-                        Category
+                        
+                        <%= row.gigCategory %>
                       </h5>
                       <h5 class="card-title">
                         <%= row.subCategory %>

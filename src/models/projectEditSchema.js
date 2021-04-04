@@ -3,8 +3,11 @@ const mongoose = require("mongoose")
 const projects = new mongoose.Schema({
     companyName: {
         type: String,
-        required: true,
-        unique: true
+        required: true
+    },
+    positionAvailable : {
+        type: String,
+        required: true
     },
     startDate: {
         type: Date,
@@ -12,6 +15,10 @@ const projects = new mongoose.Schema({
     },
     applyBy: {
         type: Date,
+        required: true
+    },
+    projectType:{
+        type: String,
         required: true
     },
     duration: {
@@ -44,6 +51,10 @@ const projects = new mongoose.Schema({
     //     type: String,
     //     required: true
     // },
+    workLocation:{
+        type: String,
+        require: true
+    },
     openings: {
         type: Number,
         required: true
@@ -52,7 +63,11 @@ const projects = new mongoose.Schema({
         type: String,
         required: true
     },
-    jobJD: {
+    companyLocation:{
+        type: String,
+        required: true
+    },
+    jobTitle: {
         type: String,
         required: true
     },

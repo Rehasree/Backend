@@ -147,13 +147,13 @@
                     <input type="text" name="companyName" class="form-control" placeholder="Company Name">
                   </div>
                   <div class="col">
-                    <select id="inputState" class="form-control">
+                    <select id="positionAvailable" name="positionAvailable" class="form-control">
                       <option selected>Position Availaible</option>
-                      <option value="GraphicDesigner">Graphic Designer</option>
-                      <option value="WebDesigner">Web Designer</option>
-                      <option value="WebDeveloper">Web Developer</option>
-                      <option value="ContentWriter">Content Writer</option>
-                      <option value="SEOExpert">SEO Expert</option>
+                      <option value="Graphic Designer">Graphic Designer</option>
+                      <option value="Web Designer">Web Designer</option>
+                      <option value="Web Developer">Web Developer</option>
+                      <option value="Content Writer">Content Writer</option>
+                      <option value="SEO Expert">SEO Expert</option>
                     </select>
                   </div>
                 </div>
@@ -171,27 +171,27 @@
                 <br />
                 <div class="row">
                   <div class="col">
-                    <select id="inputState" class="form-control">
+                    <select id="projectType" name ="projectType"class="form-control">
                       <option selected>Type of Project</option>
                       <option value="Long-term">Long-term</option>
                       <option value="Short-Term">Short-Term</option>
                     </select>
                   </div>
                   <div class="col">
-                    <input type="number" min="1" name="duration" class="form-control" placeholder="Duration">
+                    <input type="number" min="1" name="duration" class="form-control" placeholder="Duration in months">
                   </div>
                   <div class="col">
-                    <input type="number" name="stipend" class="form-control" placeholder="Stipend">
+                    <input type="number" name="stipend" class="form-control" placeholder="Stipend (/-)">
                   </div>
 
                 </div>
                 <br />
                 <div class="row">
                   <div class="col">
-                    <select id="worklocation" class="form-control">
+                    <select id="workLocation" name="workLocation" class="form-control">
                       <option selected>Work location</option>
-                      <option value="work_from_home">work from home</option>
-                      <option value="Company_location">Company location</option>
+                      <option value="Work from home">work from home</option>
+                      <option value="Company Location">Company location</option>
                     </select>
                   </div>
                   <div class="col">
@@ -211,10 +211,13 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group col-12">
-                    <input type="text" name="jobJD" class="form-control" id="inputZip" placeholder="Job Title">
+                  <div class="form-group col-6">
+                    <input type="text" name="jobTitle" class="form-control" id="inputZip" placeholder="Job Title">
                   </div>
-                  <div class="form-group col-qw">
+                  <div class="form-group col-6">
+                    <input type="text" name="companyLocation" class="form-control" id="inputZip" placeholder="Company Location">
+                  </div>
+                  <div class="form-group col-12">
                     <input type="text" name="workJD" class="form-control" id="inputZip" placeholder="work Description">
                   </div>
                 </div>

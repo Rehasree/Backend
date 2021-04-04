@@ -205,7 +205,7 @@ app.post("/signup", (req, res) => {
 app.post("/signin", passport.authenticate("local", {
     failureRedirect: "/signin"
 }), (req, res) => {
-    console.log(req.user)
+   // console.log(req.user)
     res.redirect("/Homepage2")
 
 });
@@ -215,17 +215,20 @@ app.post("/projectEdit", upload, async (req, res) => {
     try {
         const inputEmployee = await new ProjectPart({
             companyName: req.body.companyName,
+            positionAvailable: req.body.positionAvailable,
             startDate: req.body.startDate,
             applyBy: req.body.applyBy,
             duration: req.body.duration,
+            workLocation: req.body.workLocation,
             stipend: req.body.stipend,
+            projectType:req.body.projectType,
+            companyLocation: req.body.companyLocation,
             skills: req.body.skills,
             openings: req.body.openings,
             weblink: req.body.weblink,
-            jobJD: req.body.jobJD,
+            jobTitle: req.body.jobTitle,
             workJD: req.body.workJD,
             myimage: req.file.filename
-
         })
         const registered = await inputEmployee.save();
         res.status(201).redirect("/Projects")
@@ -280,6 +283,7 @@ app.post("/GigEdit", async (req, res) => {
             describeGig: req.body.describeGig,
             subCategory: req.body.subCategory,
             price: req.body.price,
+            gigCategory : req.body.gigCategory,
            // image4: req.file.filename
             // image1: req.file.filename,
             // image2: req.file.filename,
@@ -329,7 +333,7 @@ app.post("/update/", upload, function (req, res, next) {
         skills: req.body.skills,
         openings: req.body.openings,
         weblink: req.body.weblink,
-        jobJD: req.body.jobJD,
+        jobTitle: req.body.jobTitle,
         workJD: req.body.workJD,
         myimage: req.file.filename
     });

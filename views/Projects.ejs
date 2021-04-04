@@ -148,15 +148,16 @@
                         <div class="col-8">
                           <p>
                             <span style="font-size: 30px;"><b>
-                              <a style="text-transform:uppercase;" href="<%= row.weblink %>"> <%= row.companyName %></a>
-                            </b></span><br /> 
+                              <p style="text-transform:uppercase;"> <%= row.jobTitle %></p>
+                            </b></span>
                           </p>
                          
-                          <p>
-                            <span><b>Position Availaible: <%= row.jobJD %></b></span>
+                          <p style="font-size:25px;color:grey">
+                            <a href="<%= row.weblink %>"> <%= row.companyName %>(<i style="font-size:24px" class="bx bxl-periscope"><%=row.companyLocation %></i>)</a>
+                           <br/>
                           </p>
                           <div class="work_From_home">
-                            <p><a href="" class="home"><i class="bx bx-home-alt"></i>Work from home</a></p>
+                            <p><a href="" class="home"><i class="bx bx-home-alt"> <%= row.workLocation %></i></a></p>
                           </div>
                         </div>
                         <div class="col-4">
@@ -177,7 +178,7 @@
                         <div class="col">
                           <p><a href="#" class="startDate"><i class="bx bx-calendar-event"></i>DURATION</a>
                             <br /><span>
-                              <%= row.duration %> months
+                              <%= row.duration %> months <br/> <span> <%= row.projectType%> </span>
                             </span>
                           </p>
                         </div>
@@ -219,7 +220,16 @@
                               </P>
   
                             </div>
+
+                            <div class="col-12">
+                              <p><b>Position Availaible: </b><br /></p>
+                              <P>
+                                <%=  row.positionAvailable  %>
+                                
+                              </P>
   
+                            </div>
+                            
                             <div class="col-12">
                               <p><b>No. of Openings</b><br /></p>
                               <P><%= row.openings %></P>
