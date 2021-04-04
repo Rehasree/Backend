@@ -67,10 +67,16 @@
     #moreDetails {
       display: none;
     }
+    @media screen and (min-width:700px ) and (max-width:7000px) {
+      .Projects{
+        margin-left: 120px;
+        margin-right: 120px;
+      }
+    }
   </style>
-  <% projects.forEach((row)=>{ %>
+ 
     <main id="main">
-      <section>
+      <section class="Projects">
         <br /><br />
         <div class="row">
           <!-- filters section begins -->
@@ -133,124 +139,118 @@
             </div>
           </div>
           <!-- filters section ends -->
-          <div class="col-xl-9 col-sm-12">
-            <div class="row">
-
-              <div class="col-12">
-                <div class="card">
-                  <div class="row">
-                    <div class="col-8">
-                      <p><b>
-                          <%= row.jobJD %>
-                        </b><br />
-                        <span><b>
-                            <%= row.companyName %>
-                          </b></span><br />
-                        <span><b>Position Availaible</b></span>
-                      </p>
-                      <div class="work_From_home">
-                        <p><a href="" class="home"><i class="bx bx-home-alt"></i>Work from home</a></p>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="float-right">
-                        <img src="/uploads/<%= row.myimage %>" alt="anmol" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row Project-Details">
-                    <div class="col">
-                      <p><a href="#" class="startDate"><i class="bx bx-paper-plane"></i>START DATE</a>
-                        <br /><span>
-                          <%= row.startDate %>
-                        </span>
-                      </p>
-                    </div>
-                    <div class="col">
-                      <p><a href="#" class="startDate"><i class="bx bx-calendar-event"></i>DURATION</a>
-                        <br /><span>
-                          <%= row.duration %>
-                        </span>
-                      </p>
-                    </div>
-                    <div class="col">
-                      <p><a href="#" class="startDate"><i class="bx  bx-rename"></i>STIPEND</a>
-                        <br /><span>
-                          <%= row.stipend %>
-                        </span>
-                      </p>
-                    </div>
-                    <div class="col">
-                      <p><a href="#" class="startDate"><i class="bx bx-time"></i>APPLY BY</a>
-                        <br /><span>
-                          <%= row.applyBy %>
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                  <div id="moreDetails">
-                    <div class="row">
-                      <div align="right">
-                        <button onclick="closeDiv()" type="button" class="btn-close" data-bs-dismiss="modal"
-                          aria-label="Close"></button>
-                      </div>
-                      <div class="col-12">
-                        <p><b>Work Description</b><br /></p>
-                        <P>
-                          <%= row.workJD %>
-                        </P>
-
-                      </div>
-
-                      <div class="col-12">
-                        <p><b>Skills Required</b><br /></p>
-                        <P>
-                          <%= row.skills %>
-                        </P>
-
-                      </div>
-
-                      <div class="col-12">
-                        <p><b>No. of Openings</b><br /></p>
-                        <P>1</P>
-
-                      </div>
+            <div class="col-xl-9 col-sm-12">
+              <div class="row">
+                <% projects.forEach((row,index)=>{ %>
+                  <div class="col-12">
+                    <div class="card">
                       <div class="row">
-                        <div class="col-3"></div>
                         <div class="col-8">
-                          <div class="float-right ">
-                            <div class="text-center"><button type="submit">Apply Now</button></div>
+                          <p>
+                            <span style="font-size: 30px;"><b>
+                              <a style="text-transform:uppercase;" href="<%= row.weblink %>"> <%= row.companyName %></a>
+                            </b></span><br /> 
+                          </p>
+                         
+                          <p>
+                            <span><b>Position Availaible: <%= row.jobJD %></b></span>
+                          </p>
+                          <div class="work_From_home">
+                            <p><a href="" class="home"><i class="bx bx-home-alt"></i>Work from home</a></p>
                           </div>
-                          <div class="text-center"><button type="submit">Contact</button></div>
                         </div>
-                        <div class="row">
-                          <div class="col-9"></div>
-                          <div class="col-3">
+                        <div class="col-4">
+                          <div class="float-right">
+                            <img src="/uploads/<%= row.myimage %>" alt="profileimg" />
+                          </div>
+                        </div>
+                      </div>
 
+                      <div class="row Project-Details">
+                        <div class="col">
+                          <p><a href="#" class="startDate"><i class="bx bx-paper-plane"></i>START DATE</a>
+                            <br /><span>
+                              <%= row.startDate %>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="col">
+                          <p><a href="#" class="startDate"><i class="bx bx-calendar-event"></i>DURATION</a>
+                            <br /><span>
+                              <%= row.duration %> months
+                            </span>
+                          </p>
+                        </div>
+                        <div class="col">
+                          <p><a href="#" class="startDate"><i class="bx  bx-rename"></i>STIPEND</a>
+                            <br /><span>
+                              <%= row.stipend %>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="col">
+                          <p><a href="#" class="startDate"><i class="bx bx-time"></i>APPLY BY</a>
+                            <br /><span>
+                              <%= row.applyBy %>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                      <p align="right">
+                        <button style="padding: 10px; margin: 10px; border-radius: 27px; background-color:navy; width: 150px;"  class="btn btn-primary" type="submit" data-toggle="collapse" data-target="#collapseExample<%=index%>" aria-expanded="false" aria-controls="collapseExample<%=index%>">
+                          View more
+                        </button>
+                      </p>
+                      <div class="collapse" id="collapseExample<%=index%>">
+                        <div class="">
+                          <div class="row">
+                            <div class="col-12">
+                              <p><b>Work Description</b><br /></p>
+                              <P>
+                                <%= row.workJD %>
+                              </P>
+  
+                            </div>
+  
+                            <div class="col-12">
+                              <p><b>Skills Required</b><br /></p>
+                              <P>
+                                <%= row.skills %>
+                              </P>
+  
+                            </div>
+  
+                            <div class="col-12">
+                              <p><b>No. of Openings</b><br /></p>
+                              <P><%= row.openings %></P>
+                            </div>
+                            <div class="row">
+                              <div class="col-3"></div>
+                              <div class="col-8">
+                                <div class="float-right ">
+                                  <div class="text-center"><button type="submit">Apply Now</button></div>
+                                </div>
+                                <div class="text-center"><button type="submit">Contact</button></div>
+                            </div>
+                            <div class="row">
+                              <div class="col-9"></div>
+                              <div class="col-3">
+                                
+                              </div>
+                            </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-8">
-                      <div class="float-right">
-                        <div onclick="function1()" id="openbutton" class="text-center"><button type="submit">View
-                            Details</button></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <% }) %>
               </div>
-            </div>
-          </div>
-
+            </div>  
         </div>
       </section>
     </main>
-    <% }) %>
+    
       <!-- End #main -->
 
       <!-- ======= Footer ======= -->
@@ -273,18 +273,7 @@
           </div>
         </div>
       </footer><!-- End Footer -->
-      <script>
-        function function1() {
-          console.log("opened")
-          document.getElementById("moreDetails").style.display = "block";
-          document.getElementById("openbutton").style.display = "none";
-        }
-        function closeDiv() {
-          console.log("closed")
-          document.getElementById("moreDetails").style.display = "none";
-          document.getElementById("openbutton").style.display = "block";
-        }
-      </script>
+     
       <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
       <div id="preloader"></div>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

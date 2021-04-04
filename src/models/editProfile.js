@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const edit = new mongoose.Schema({
+const editProfile = new mongoose.Schema({
     fullName: {
         type: String,
         required: true,
@@ -32,10 +32,7 @@ const edit = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
-
-
-
 })
 
 
-module.exports = mongoose.model("editProfile", edit);
+module.exports = mongoose.model("editProfile", editProfile);

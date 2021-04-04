@@ -19,7 +19,7 @@ const app = express();
 require("./db/conn")
 const Register = require("./models/register")
 const ProjectPart = require("./models/projectEditSchema");
-const GigPart = require("./models/anmol");
+const GigPart = require("./models/gigEdit");
 const EditProfile = require("./models/editProfile");
 const { isLoggedIn } = require("./middleware/index")
 
@@ -28,7 +28,7 @@ const bodyParser = require("body-parser");
 const editProfile = require("./models/editProfile");
 const { profile } = require("console");
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3000;
 
 const static_path = path.join(__dirname, "../assets")
 
@@ -141,23 +141,33 @@ app.get("/payment", (req, res) => {
 app.get("/shortlist", (req, res) => {
     res.render("shortlist")
 })
+
 app.get("/sidebar", async (req, res) => {
     try {
-        const prjct = await GigPart.find({})
-        const prfile = await EditProfile.find({})
+        const GigDetails = await GigPart.find({})
+        const ProfileEdit = await EditProfile.find({})
         const postedProject = await ProjectPart.find({})
 
-        console.log(postedProject)
-        console.log("sending to ejs ", prfile)
+        // console.log(postedProject)
+        // console.log("sending to ejs ", ProfileEdit)
 
 
-        res.render("sidebar", { gigs: prjct, edit: prfile[0], posted: postedProject })
+        res.render("sidebar", { gigs: GigDetails, edit: ProfileEdit[0], posted: postedProject })
     } catch (err) {
         console.log(err)
     }
 
 })
 
+app.get("/freelancers",async(req,res)=>{
+    try{
+        const gigs = await GigPart.find({}) 
+        res.render("freelancers",{gigs: gigs})
+    }
+    catch{
+        console.log(err) 
+    }
+})
 
 app.get("/Projects", isLoggedIn, (req, res) => {
     ProjectPart.find({}, (err, projects) => {
@@ -165,7 +175,7 @@ app.get("/Projects", isLoggedIn, (req, res) => {
             console.log(err);
         } else {
             res.render("Projects", { projects: projects })
-            console.log(projects)
+            // console.log(projects)
         }
     });
 
@@ -175,29 +185,28 @@ app.post("/signup", (req, res) => {
     if (req.body.password === req.body.confirmpassword) {
         const { username, email } = req.body
         var newUser = new Register({ username, email });
-
         Register.register(newUser, req.body.password, (err, user) => {
             if (err) {
-
+                alert("Please enter all the details correctly")
                 return res.redirect("/signup");
             }
             passport.authenticate("local")(req, res, () => {
 
-                res.redirect("/index");
+                res.redirect("/Homepage2");
             });
         });
     }
     else {
+        alert("Please enter all the details correctly")
         return res.redirect("/signup");
     }
 });
 
 app.post("/signin", passport.authenticate("local", {
-
     failureRedirect: "/signin"
 }), (req, res) => {
     console.log(req.user)
-    res.redirect("/index")
+    res.redirect("/Homepage2")
 
 });
 
@@ -253,12 +262,10 @@ app.put("/sidebar", async (req, res) => {
             email: req.body.email,
             mobile: req.body.mobile,
             address: req.body.address,
-
         }
         // EditProfile.findOne(profile)
         const newDetails = await EditProfile.findOneAndUpdate({ profile: req.user._id }, updateDetails, { new: true })
         console.log(" updated are ", newDetails)
-
         res.status(201).redirect("/sidebar")
     } catch (error) {
         res.status(201).redirect("/sidebar")
@@ -273,10 +280,11 @@ app.post("/GigEdit", async (req, res) => {
             describeGig: req.body.describeGig,
             subCategory: req.body.subCategory,
             price: req.body.price,
+           // image4: req.file.filename
             // image1: req.file.filename,
             // image2: req.file.filename,
             // image3: req.file.filename,
-            // image4: req.file.filename
+            //  image4: req.file.filename
 
         })
         console.log(inputGig)

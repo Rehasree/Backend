@@ -172,7 +172,7 @@
                 </div>
                 <div class="col-sm-9 text-secondary">
 
-                  Anmol Kumar
+                  Anmol ProjectDetails
                 </div>
               </div>
               <hr>
@@ -496,9 +496,10 @@
 
     <div id="PostedProjects" class="tabcontent">
       <h3>Posted Projects</h3>
-      <% posted.forEach((row)=>{ %>
-        <div class="card" id="cardclick">
-          <h5 class="card-header">Project-1</h5>
+      <div class="container">
+        <% posted.forEach((row,index)=>{ %>
+        <div class="card " id="cardclick">
+          <h5 class="card-header">Project-<%=index+1%></h5>
 
           <div class="card-body">
             <div class="row">
@@ -523,7 +524,7 @@
                 <div class="row">
                   <div class="col">
                     <h5 class="card-title"><b>
-                        <%= row.jobJD %>
+                       <b><%= row.jobJD %></b> <a href="<%= row.weblink %>">( <%= row.companyName %>)</a> 
                       </b></h5>
                   </div>
                 </div>
@@ -539,18 +540,21 @@
             </div>
           </div>
         </div>
+        <br/>
         <% }) %>
+      </div>
     </div>
     <div id="Gigs" class="tabcontent">
       <div class="container">
         <h3>Gigs</h3>
+        <% gigs.forEach((row,index)=>{ %>
         <div class="card" id="cardclick">
-          <h5 class="card-header">Gig-1</h5>
+          <h5 class="card-header">Gig-<%= index+1%></h5>
 
           <div class="card-body">
             <div class="row">
               <div class="col" style="align-items: center;">
-                <img src="img/me.png" style="height: 200px; float:left; width: 200px;">
+                <img src="/uploads/<%= row.myimage %>" style="height: 200px; float:left; width: 200px;">
                 <div class="row">
                   <div class="col">
                     <div class="btn-group dropleft" style="float: right;">
@@ -566,7 +570,7 @@
                   </div>
 
                 </div>
-                <% gigs.forEach((row)=>{ %>
+            
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title"><b>
@@ -594,11 +598,13 @@
                       </h5>
                     </div>
                   </div>
-                  <% }) %>
+               
               </div>
             </div>
           </div>
         </div>
+        <br/>
+        <% }) %>
       </div>
     </div>
     <div id="Wallet" class="tabcontent">

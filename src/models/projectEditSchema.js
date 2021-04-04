@@ -6,11 +6,6 @@ const projects = new mongoose.Schema({
         required: true,
         unique: true
     },
-    // positionAvailable: {
-    //     type: String,
-    //     required: true
-
-    // },
     startDate: {
         type: Date,
         required: true
@@ -30,6 +25,7 @@ const projects = new mongoose.Schema({
     skills: {
         type: String,
         required: true
+        
     },
     // eligibility: {
     //     type: String,
@@ -68,5 +64,5 @@ const projects = new mongoose.Schema({
 
 })
 
-const Kumar = new mongoose.model("Kumar", projects)
-module.exports = Kumar
+const ProjectDetails = new mongoose.model("ProjectDetails", projects)
+module.exports = ProjectDetails

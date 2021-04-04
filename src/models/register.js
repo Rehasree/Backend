@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const passportLocalMongoose = require("passport-local-mongoose");
-
 const freelancerSchema = new mongoose.Schema({
 
     email: {
@@ -11,7 +10,6 @@ const freelancerSchema = new mongoose.Schema({
 
 })
 freelancerSchema.plugin(passportLocalMongoose);
-
 // generating token for user authentication
 // freelancerSchema.methods.generateAuthToken = async function () {
 //     try {
@@ -35,6 +33,4 @@ freelancerSchema.plugin(passportLocalMongoose);
 //     }
 //     next();
 // })
-
-
 module.exports = mongoose.model("User", freelancerSchema);
